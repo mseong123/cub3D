@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/22 10:35:39 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:00:34 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,9 @@ void	right(t_data *data);
 void	rotate_left(t_data *data);
 void	rotate_right(t_data *data);
 
-
 //render
 void	img_pix_put(t_img *img, int x, int y, uint32_t color);
-int		render_frame(t_data *data);
+void	render_frame(t_data *data);
 void	set_raycast_values(t_data *data, int x);
 void	calc_init_side(t_data *data);
 void	dda(t_data *data);
