@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melee <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/18 09:26:58 by melee            ###   ########.fr       */
+/*   Updated: 2023/08/22 10:35:39 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 # define W_WIDTH 1280
 # define W_HEIGHT 640
 # define KEYPRESS 2
+# define KEYRELEASE 3
 # define DESTROY 17
-# define MOVESPEED 0.3
-# define ROTSPEED 0.1
+# define MOVESPEED 0.10
+# define ROTSPEED 0.025
+// move speed was 0.3
+// rotspeed was 0.1
+// modified handler_key to handler_keydown and handler_keyup
+// modified renderer to create a new image everytime it loops(somehow)
+// modified init to include the player moving direction boolean
 
 //libraries
 # include "libft.h"
@@ -26,12 +32,19 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 
 //structs
 typedef struct s_player
 {
 	double	posX;
 	double	posY;
+	bool	left;
+	bool	right;
+	bool	forward;
+	bool	backward;
+	bool	rot_left;
+	bool	rot_right;
 }	t_player;
 
 typedef struct s_ray
@@ -85,7 +98,8 @@ void	init_image(t_data *data, t_img *img, int width, int height);
 void	parse_map(t_data *data);
 
 //handle
-int		handle_key(int keycode, t_data *data);
+int		handle_keydown(int keycode, t_data *data);
+int		handle_keyup(int keycode, t_data *data);
 int		handle_destroy(t_data *data);
 
 //movement

@@ -10,7 +10,6 @@ void	rotate_left(t_data *data)
 	tmpX = data->ray->planeX;
 	data->ray->planeX = data->ray->planeX * cos(-ROTSPEED) - data->ray->planeY * sin(-ROTSPEED);
 	data->ray->planeY = tmpX * sin(-ROTSPEED) + data->ray->planeY * cos(-ROTSPEED);
-	render_frame(data);
 }
 
 void	rotate_right(t_data *data)
@@ -23,5 +22,4 @@ void	rotate_right(t_data *data)
 	tmpX = data->ray->planeX;
 	data->ray->planeX = data->ray->planeX * cos(-ROTSPEED) - data->ray->planeY * sin(ROTSPEED);
 	data->ray->planeY = tmpX * sin(ROTSPEED) + data->ray->planeY * cos(ROTSPEED);
-	render_frame(data);
 }

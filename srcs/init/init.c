@@ -23,6 +23,7 @@ void	init_ray(t_ray *ray)
 	ray->drawEnd = 0;
 }
 
+// added booleans for player
 void	init(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
@@ -40,7 +41,12 @@ void	init(t_data *data)
 	}
 	data->player->posX = 5;
 	data->player->posY = 5;
-	init_image(data, data->camera, W_WIDTH, W_HEIGHT);
+	data->player->forward = false;
+	data->player->backward = false;
+	data->player->left = false;
+	data->player->right = false;
+	data->player->rot_left = false;
+	data->player->rot_right = false;
 	init_ray(data->ray);
 
 }
