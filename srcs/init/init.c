@@ -21,6 +21,26 @@ void	init_ray(t_ray *ray)
 	ray->stepY = 0;
 	ray->drawStart = 0;
 	ray->drawEnd = 0;
+	ray->lineHeight = 0;
+}
+
+void	init_player(t_player *player)
+{
+	player->posX = 5;
+	player->posY = 5;
+	player->forward = false;
+	player->backward = false;
+	player->left = false;
+	player->right = false;
+	player->rot_left = false;
+	player->rot_right = false;
+}
+
+void	init_texture(t_tex *texture)
+{
+	texture->texX = 0;
+	texture->step = 0;
+	texture->texPos = 0;
 }
 
 // added booleans for player
@@ -39,18 +59,13 @@ void	init(t_data *data)
 		perror("cub3d");
 		exit(EXIT_FAILURE);
 	}
-	data->player.posX = 5;
-	data->player.posY = 5;
-	data->player.forward = false;
-	data->player.backward = false;
-	data->player.left = false;
-	data->player.right = false;
-	data->player.rot_left = false;
-	data->player.rot_right = false;
 	data->c_fps = ft_strdup("0");
 	data->frames = 0;
 	gettimeofday(&data->frame_start, NULL);
+	data->ceil_color = 0x73a5c6;
+	data->floor_color = 0x2e5984;
+	init_player(&data->player);
 	init_ray(&data->ray);
-
+	init_texture(&data->texture);
 }
 

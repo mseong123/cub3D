@@ -72,7 +72,7 @@ void	cal_height(t_data *data)
 	int lineHeight;
 	
 	lineHeight = (int)(W_HEIGHT / data->ray.perpDist);
-	// printf("lineheight %f\n", data->ray->perpDist);
+	data->ray.lineHeight = lineHeight;
 	data->ray.drawStart = -lineHeight / 2 + W_HEIGHT / 2;
     if(data->ray.drawStart < 0)
 		data->ray.drawStart = 0;

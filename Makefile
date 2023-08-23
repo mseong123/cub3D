@@ -7,7 +7,8 @@ SRC_NAME =	main \
 			movement/movement \
 			movement/rotate \
 			render/render \
-			render/raycast
+			render/raycast \
+			render/texture
 SRC = $(SRC_NAME:=.c)
 SRCS_PATH = ./srcs/
 SRCS = $(addprefix $(SRCS_PATH), $(SRC))

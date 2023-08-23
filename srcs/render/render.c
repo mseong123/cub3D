@@ -20,18 +20,41 @@ void	img_pix_put(t_img *img, int x, int y, uint32_t color)
 	*(uint32_t *)pixel = color;
 }
 
-void	fill_camera(t_data *data, int x)
+void	fill_ceil_floor(t_data *data, int x)
 {
-	int	y;
+	int i;
 
-	y = data->ray.drawStart;
-	while (y < data->ray.drawEnd)
+	i = 0;
+	while (i < data->ray.drawStart)
+		img_pix_put(data->camera, x, i++, data->ceil_color);
+	i = data->ray.drawEnd;
+	while (i < W_HEIGHT)
+		img_pix_put(data->camera, x, i++, data->floor_color);
+}
+
+void	draw_camera(t_data *data, int x)
+{
+	int texY;
+	int drawStart;
+	uint32_t *tex_addr;
+	uint32_t color;
+	int	tex_direct;
+
+	calc_texX(data);
+	calc_texPos(data);
+	drawStart = data->ray.drawStart;
+	fill_ceil_floor(data, x);
+	tex_direct = get_tex_direct(data);
+	while (drawStart < data->ray.drawEnd)
 	{
-		if (data->ray.side == 1)
-			img_pix_put(data->camera, x, y, 0xFF00);
-		else
-			img_pix_put(data->camera, x, y, 0xFF00 / 2);
-		y++;
+		texY = (int)data->texture.texPos & (T_HEIGHT - 1);
+		data->texture.texPos += data->texture.step;
+		tex_addr = (uint32_t *)(data->tex[tex_direct].addr + ((texY * data->tex[tex_direct].line_len) + (data->texture.texX * (data->tex[tex_direct].bpp/8))));
+		color = *tex_addr;
+		if (tex_direct == NORTH || tex_direct == SOUTH)
+			color = (color >> 1) & 8355711;
+		img_pix_put(data->camera, x, drawStart, color);
+		drawStart++;
 	}
 }
 
@@ -48,15 +71,13 @@ void	render_frame(t_data *data)
 		calc_init_side(data);
 		dda(data);
 		cal_height(data);
-		fill_camera(data, x);
+		draw_camera(data, x);
 		x++;
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, \
 	data->camera->mlx_img, 0, 0);
 	mlx_destroy_image(data->mlx_ptr, data->camera->mlx_img);
 }
-
-// idk how it loops here
 
 
 

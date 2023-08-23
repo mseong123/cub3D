@@ -56,16 +56,10 @@ int	loop_handler(t_data *data)
 int	main(void)
 {
 	t_data		data;
-	// t_player	player;
-	// t_ray		ray;
-	// t_img		camera;
-
-	// data.player = player;
-	// data.ray = ray;
-	// data.camera = camera;
 
 	init(&data);
 	parse_map(&data);
+	init_tex(&data);
 	mlx_hook(data.mlx_win, KEYPRESS, 0, handle_keydown, &data);
 	mlx_hook(data.mlx_win, KEYRELEASE, 0, handle_keyup, &data);
 	mlx_hook(data.mlx_win, DESTROY, 0, handle_destroy, &data);

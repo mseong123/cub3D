@@ -17,13 +17,15 @@
 # define KEYPRESS 2
 # define KEYRELEASE 3
 # define DESTROY 17
-# define MOVESPEED 0.09
+# define MOVESPEED 0.05
 # define ROTSPEED 0.025
-// move speed was 0.3
-// rotspeed was 0.1
-// modified handler_key to handler_keydown and handler_keyup
-// modified renderer to create a new image everytime it loops(somehow)
-// modified init to include the player moving direction boolean
+# define T_WIDTH 640
+# define T_HEIGHT 640
+# define COLLISION_MOD 3
+# define NORTH 0
+# define SOUTH 1
+# define EAST 2
+# define WEST 3
 
 //libraries
 # include "libft.h"
@@ -71,6 +73,7 @@ typedef struct s_ray
 	int		stepY;
 	int		drawStart;
 	int		drawEnd;
+	int		lineHeight;
 }	t_ray;
 
 typedef struct s_img
@@ -82,13 +85,21 @@ typedef struct s_img
     int		endian;
 }	t_img;
 
+typedef struct s_tex
+{
+	int	texX;
+	double step;
+	double texPos;
+}	t_tex;
+
 typedef struct s_data
 {
 	void			*mlx_ptr;
 	void			*mlx_win;
 	t_player		player;
 	t_ray			ray;
-	t_img			tex;
+	t_img			tex[4];
+	t_tex			texture;
 	char			**map;
 	uint32_t		ceil_color;
 	uint32_t		floor_color;
@@ -101,6 +112,7 @@ typedef struct s_data
 //init
 void	init(t_data *data);
 void	init_image(t_data *data, t_img *img, int width, int height);
+void	init_tex(t_data *data);
 void	parse_map(t_data *data);
 
 //handle
@@ -123,5 +135,8 @@ void	set_raycast_values(t_data *data, int x);
 void	calc_init_side(t_data *data);
 void	dda(t_data *data);
 void	cal_height(t_data *data);
+void	calc_texX(t_data *data);
+void	calc_texPos(t_data *data);
+int		get_tex_direct(t_data *data);
 
 #endif
