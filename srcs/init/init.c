@@ -39,15 +39,18 @@ void	init(t_data *data)
 		perror("cub3d");
 		exit(EXIT_FAILURE);
 	}
-	data->player->posX = 5;
-	data->player->posY = 5;
-	data->player->forward = false;
-	data->player->backward = false;
-	data->player->left = false;
-	data->player->right = false;
-	data->player->rot_left = false;
-	data->player->rot_right = false;
-	init_ray(data->ray);
+	data->player.posX = 5;
+	data->player.posY = 5;
+	data->player.forward = false;
+	data->player.backward = false;
+	data->player.left = false;
+	data->player.right = false;
+	data->player.rot_left = false;
+	data->player.rot_right = false;
+	data->c_fps = ft_strdup("0");
+	data->frames = 0;
+	gettimeofday(&data->frame_start, NULL);
+	init_ray(&data->ray);
 
 }
 

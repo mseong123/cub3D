@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:58:11 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/22 10:58:12 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/23 08:55:12 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	fill_camera(t_data *data, int x)
 {
 	int	y;
 
-	y = data->ray->drawStart;
-	while (y < data->ray->drawEnd)
+	y = data->ray.drawStart;
+	while (y < data->ray.drawEnd)
 	{
-		if (data->ray->side == 1)
+		if (data->ray.side == 1)
 			img_pix_put(data->camera, x, y, 0xFF00);
 		else
 			img_pix_put(data->camera, x, y, 0xFF00 / 2);

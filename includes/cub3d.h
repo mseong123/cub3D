@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/22 11:00:34 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/23 08:53:00 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define KEYPRESS 2
 # define KEYRELEASE 3
 # define DESTROY 17
-# define MOVESPEED 0.10
+# define MOVESPEED 0.09
 # define ROTSPEED 0.025
 // move speed was 0.3
 // rotspeed was 0.1
@@ -33,6 +33,9 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
+
+//temp if not allowed
+# include <sys/time.h>
 
 //structs
 typedef struct s_player
@@ -81,15 +84,18 @@ typedef struct s_img
 
 typedef struct s_data
 {
-	void		*mlx_ptr;
-	void		*mlx_win;
-	t_player	*player;
-	t_ray		*ray;
-	t_img		*tex;
-	char		**map;
-	uint32_t	ceil_color;
-	uint32_t	floor_color;
-	t_img		*camera;
+	void			*mlx_ptr;
+	void			*mlx_win;
+	t_player		player;
+	t_ray			ray;
+	t_img			tex;
+	char			**map;
+	uint32_t		ceil_color;
+	uint32_t		floor_color;
+	t_img			*camera;
+	int				frames;
+	struct timeval	frame_start;
+	char			*c_fps;
 }	t_data;
 
 //init

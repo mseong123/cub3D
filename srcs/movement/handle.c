@@ -3,17 +3,17 @@
 int	handle_keydown(int keycode, t_data *data)
 {
 	if (keycode == 13)
-		data->player->forward = true;
+		data->player.forward = true;
 	else if (keycode == 0)
-		data->player->left = true;
+		data->player.left = true;
 	else if (keycode == 2)
-		data->player->right = true;
+		data->player.right = true;
 	else if (keycode == 1)
-		data->player->backward = true;
+		data->player.backward = true;
 	else if (keycode == 123)
-		data->player->rot_left = true;
+		data->player.rot_left = true;
 	else if (keycode == 124)
-		data->player->rot_right = true;
+		data->player.rot_right = true;
 	else if (keycode == 53)
 		exit(EXIT_SUCCESS);
 	return (0);
@@ -22,17 +22,17 @@ int	handle_keydown(int keycode, t_data *data)
 int	handle_keyup(int keycode, t_data *data)
 {
 	if (keycode == 13)
-		data->player->forward = false;
+		data->player.forward = false;
 	else if (keycode == 0)
-		data->player->left = false;
+		data->player.left = false;
 	else if (keycode == 2)
-		data->player->right = false;
+		data->player.right = false;
 	else if (keycode == 1)
-		data->player->backward = false;
+		data->player.backward = false;
 	else if (keycode == 123)
-		data->player->rot_left = false;
+		data->player.rot_left = false;
 	else if (keycode == 124)
-		data->player->rot_right = false;
+		data->player.rot_right = false;
 	return (0);
 }
 
