@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/28 09:38:07 by lewlee            #+#    #+#             */
+/*   Updated: 2023/08/28 14:23:31 by lewlee           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	init_ray(t_ray *ray)
@@ -26,8 +38,6 @@ void	init_ray(t_ray *ray)
 
 void	init_player(t_player *player)
 {
-	player->posX = 5;
-	player->posY = 5;
 	player->forward = false;
 	player->backward = false;
 	player->left = false;
@@ -36,16 +46,49 @@ void	init_player(t_player *player)
 	player->rot_right = false;
 }
 
-void	init_texture(t_tex *texture)
+void	init_image(t_data *data, t_img *img, int width, int height)
 {
-	texture->texX = 0;
-	texture->step = 0;
-	texture->texPos = 0;
+	img->mlx_img = mlx_new_image(data->mlx_ptr, width, height);
+	img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, \
+	&img->line_len, &img->endian);
 }
 
-// added booleans for player
-void	init(t_data *data)
+void	init1(t_data *data, char **file)
 {
+	t_map	dfs_info;
+
+	get_map(data, file, getfileinfo(data, file));
+	dfs_init(&dfs_info, data);
+	if (checkmapchar(data->map) == -1)
+		exit (write(2, "Error: Invalid charact", 23) \
+		- write(2, "ers/player not found\n", 22));
+	if (dfs(&dfs_info, dfs_info.start) != 1 && *dfs_info.flag == 1)
+		exit (write(2, "Error: Invalid", 15) - write(2, " map layout \n", 14));
+	free(dfs_info.flag);
+	free2d_int(dfs_info.visited, dfs_info.max.y + 2);
+	free2d_char(dfs_info.map, dfs_info.max.y);
+	data->player.posY = find_player(data->map).y;
+	data->player.posX = find_player(data->map).x;
+	data->c_fps = ft_strdup("0");
+	data->frames = 0;
+	gettimeofday(&data->frame_start, NULL);
+	init_player(&data->player);
+	init_ray(&data->ray);
+	(&data->texture)->texX = 0;
+	(&data->texture)->step = 0;
+	(&data->texture)->texPos = 0;
+}
+
+void	init(t_data *data, char *str)
+{
+	char	**file;
+
+	file = get_file(str);
+	if (!file || !*file)
+	{
+		perror("cub3d");
+		exit (1);
+	}
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 	{
@@ -59,13 +102,5 @@ void	init(t_data *data)
 		perror("cub3d");
 		exit(EXIT_FAILURE);
 	}
-	data->c_fps = ft_strdup("0");
-	data->frames = 0;
-	gettimeofday(&data->frame_start, NULL);
-	data->ceil_color = 0x73a5c6;
-	data->floor_color = 0x2e5984;
-	init_player(&data->player);
-	init_ray(&data->ray);
-	init_texture(&data->texture);
+	init1(data, file);
 }
-

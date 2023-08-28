@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:58:11 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/23 08:55:12 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/24 18:02:23 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	img_pix_put(t_img *img, int x, int y, uint32_t color)
 {
 	char	*pixel;
 
-	pixel = img->addr + (img->line_len * y) + (x * (img->bpp/8));
+	// printf("%p\n", img);
+	pixel = img->addr;
+	pixel += (img->line_len * y) + (x * (img->bpp/8));
 	*(uint32_t *)pixel = color;
 }
 
@@ -26,10 +28,10 @@ void	fill_ceil_floor(t_data *data, int x)
 
 	i = 0;
 	while (i < data->ray.drawStart)
-		img_pix_put(data->camera, x, i++, data->ceil_color);
+		img_pix_put(&data->camera, x, i++, data->ceil_color);
 	i = data->ray.drawEnd;
 	while (i < W_HEIGHT)
-		img_pix_put(data->camera, x, i++, data->floor_color);
+		img_pix_put(&data->camera, x, i++, data->floor_color);
 }
 
 void	draw_camera(t_data *data, int x)
@@ -53,7 +55,7 @@ void	draw_camera(t_data *data, int x)
 		color = *tex_addr;
 		if (tex_direct == NORTH || tex_direct == SOUTH)
 			color = (color >> 1) & 8355711;
-		img_pix_put(data->camera, x, drawStart, color);
+		img_pix_put(&data->camera, x, drawStart, color);
 		drawStart++;
 	}
 }
@@ -63,7 +65,7 @@ void	render_frame(t_data *data)
 	int	x;
 
 	x = 0;
-	init_image(data, data->camera, W_WIDTH, W_HEIGHT);
+	init_image(data, &data->camera, W_WIDTH, W_HEIGHT);
 	mlx_clear_window(data->mlx_ptr, data->mlx_win);
 	while (x < W_WIDTH)
 	{
@@ -75,8 +77,8 @@ void	render_frame(t_data *data)
 		x++;
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, \
-	data->camera->mlx_img, 0, 0);
-	mlx_destroy_image(data->mlx_ptr, data->camera->mlx_img);
+	data->camera.mlx_img, 0, 0);
+	mlx_destroy_image(data->mlx_ptr, data->camera.mlx_img);
 }
 
 

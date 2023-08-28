@@ -1,0 +1,7 @@
+NO ./assets/brick1.xpm
+SO ./assets/brick2.xpm
+WE ./assets/brick3.xpm
+EA ./assets/brick4.xpm
+
+F 255,255,255
+C 00,00,255

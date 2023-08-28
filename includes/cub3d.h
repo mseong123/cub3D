@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/23 08:53:00 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/28 14:24:47 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,34 @@ typedef struct s_ray
 
 typedef struct s_img
 {
-    void	*mlx_img;
-    char	*addr;
-    int		bpp; /* bits per pixel */
-    int		line_len;
-    int		endian;
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
 }	t_img;
 
 typedef struct s_tex
 {
-	int	texX;
-	double step;
-	double texPos;
+	int		texX;
+	double	step;
+	double	texPos;
 }	t_tex;
+
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
+
+typedef struct s_map
+{
+	char	**map;
+	int		**visited;
+	t_pos	max;
+	t_pos	start;
+	int		*flag;
+}	t_map;
 
 typedef struct s_data
 {
@@ -103,17 +118,20 @@ typedef struct s_data
 	char			**map;
 	uint32_t		ceil_color;
 	uint32_t		floor_color;
-	t_img			*camera;
+	t_img			camera;
 	int				frames;
 	struct timeval	frame_start;
 	char			*c_fps;
 }	t_data;
 
 //init
-void	init(t_data *data);
+void	init(t_data *data, char *str);
 void	init_image(t_data *data, t_img *img, int width, int height);
 void	init_tex(t_data *data);
-void	parse_map(t_data *data);
+char	**get_file(char *filename);
+int		getfileinfo(t_data *data, char **file);
+void	get_map(t_data *data, char **file, int i);
+void	dfs_init(t_map *map_dfs, t_data *data);
 
 //handle
 int		handle_keydown(int keycode, t_data *data);
@@ -138,5 +156,20 @@ void	cal_height(t_data *data);
 void	calc_texX(t_data *data);
 void	calc_texPos(t_data *data);
 int		get_tex_direct(t_data *data);
+
+//checks
+int		checkmapcub(char *s);
+int		checkmapchar(char **map);
+int		dfs(t_map *map, t_pos move);
+int		**init_visited(char **map);
+
+//parsing
+int		assign_color(t_data *data, char *str, int space, unsigned int *bits);
+
+//utils
+int		array2d_y(char **c);
+void	free2d_int(int **a, int n);
+void	free2d_char(char **a, int n);
+t_pos	find_player(char **map);
 
 #endif

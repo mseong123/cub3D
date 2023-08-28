@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:28:24 by melee             #+#    #+#             */
-/*   Updated: 2023/08/23 09:05:56 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/28 14:09:41 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,21 @@ int	loop_handler(t_data *data)
 	if (data->player.rot_left == true)
 		rotate_left(data);
 	if (data->player.rot_right == true)
-		rotate_right(data);	
+		rotate_right(data);
 	render_frame(data);
 	display_fps(data);
 	return (0);
 }
 
-int	main(void)
+// need to fix main not working for some reason
+
+int	main(int ac, char **av)
 {
 	t_data		data;
 
-	init(&data);
-	parse_map(&data);
-	init_tex(&data);
+	if (ac != 2 || (av[1] && checkmapcub(av[1]) == -1))
+		return (write(2, "Error: Invalid/no map file included\n", 37), 1);
+	init(&data, av[1]);
 	mlx_hook(data.mlx_win, KEYPRESS, 0, handle_keydown, &data);
 	mlx_hook(data.mlx_win, KEYRELEASE, 0, handle_keyup, &data);
 	mlx_hook(data.mlx_win, DESTROY, 0, handle_destroy, &data);
@@ -67,17 +69,3 @@ int	main(void)
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }
-/*
-	int i = 0;
-	int j = 0;
-	while (i < 10)
-	{
-		j = 0;
-		while (j < 10)
-		{
-			printf("%c", data.map[i][j++]);
-		}
-		i++;
-		printf("\n");
-	}
-*/
