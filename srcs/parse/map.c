@@ -65,7 +65,7 @@ void	get_map(t_data *data, char **file, int i)
 		new_arr[j] = maprowdup(file[i++], longest);
 		if (!new_arr[j++])
 		{
-			write (2, "Error: Failed to get map\n", 26);
+			write (2, "Error\nFailed to get map\n", 24);
 			exit (1);
 		}
 	}
