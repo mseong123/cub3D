@@ -83,20 +83,20 @@ void	init(t_data *data, char *str)
 	file = get_file(str);
 	if (!file || !*file)
 	{
-		perror("Cub3d");
+		perror("cub3D");
 		exit (1);
 	}
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 	{
-		perror("Cub3d");
+		perror("cub3D");
 		exit(EXIT_FAILURE);
 	}
 	data->mlx_win = mlx_new_window(data->mlx_ptr, \
-	W_WIDTH, W_HEIGHT, "cub3d");
+	W_WIDTH, W_HEIGHT, "cub3D");
 	if (!data->mlx_win)
 	{
-		perror("Cub3d");
+		perror("cub3D");
 		exit(EXIT_FAILURE);
 	}
 	init1(data, file);

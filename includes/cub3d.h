@@ -13,7 +13,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 # define W_WIDTH 1280
-# define W_HEIGHT 640
+# define W_HEIGHT 720
 # define KEYPRESS 2
 # define KEYRELEASE 3
 # define DESTROY 17

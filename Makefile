@@ -28,7 +28,7 @@ OBJECTS = $(addprefix $(OBJECTS_PATH), $(OBJECT))
 #HEADERS
 INCLUDE_PATH = ./includes
 
-NAME = cub3d
+NAME = cub3D
 
 CFLAGS = -Wall -Wextra -Werror 
 
