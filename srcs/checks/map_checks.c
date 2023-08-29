@@ -30,23 +30,23 @@ void	init_player_orient(char c, int *flag, t_data *data)
 {
 	if (c == 'N')
 	{
-		data->ray.dirY = -1;
-		data->ray.planeX = 0.66;
+		data->ray.diry = -1;
+		data->ray.planex = 0.66;
 	}
 	else if (c == 'E')
 	{
-		data->ray.dirX = 1;
-		data->ray.planeY = 0.66;
+		data->ray.dirx = 1;
+		data->ray.planey = 0.66;
 	}
 	else if (c == 'S')
 	{
-		data->ray.dirY = 1;
-		data->ray.planeX = -0.66;
+		data->ray.diry = 1;
+		data->ray.planex = -0.66;
 	}
 	else
 	{
-		data->ray.dirX = -1;
-		data->ray.planeY = -0.66;
+		data->ray.dirx = -1;
+		data->ray.planey = -0.66;
 	}
 	*flag += 1;
 }

@@ -12,8 +12,8 @@
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define W_WIDTH 1280
-# define W_HEIGHT 640
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
 # define KEYPRESS 2
 # define KEYRELEASE 3
 # define DESTROY 17
@@ -39,8 +39,8 @@
 //structs
 typedef struct s_player
 {
-	double	posX;
-	double	posY;
+	double	posx;
+	double	posy;
 	bool	left;
 	bool	right;
 	bool	forward;
@@ -51,26 +51,26 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-	double	rayX;
-	double	rayY;
-	double	deltaX;
-	double	deltaY;
-	double	sideX;
-	double	sideY;
-	double	perpDist;
-	int		mapX;
-	int		mapY;
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
+	double	rayx;
+	double	rayy;
+	double	deltax;
+	double	deltay;
+	double	sidex;
+	double	sidey;
+	double	perpdist;
+	int		mapx;
+	int		mapy;
 	int		side;
 	int		hit;
-	int		stepX;
-	int		stepY;
-	int		drawStart;
-	int		drawEnd;
-	int		lineHeight;
+	int		stepx;
+	int		stepy;
+	int		drawstart;
+	int		drawend;
+	int		lineheight;
 }	t_ray;
 
 typedef struct s_img
@@ -84,9 +84,9 @@ typedef struct s_img
 
 typedef struct s_tex
 {
-	int		texX;
+	int		texx;
 	double	step;
-	double	texPos;
+	double	texpos;
 }	t_tex;
 
 typedef struct s_pos
@@ -116,7 +116,6 @@ typedef struct s_data
 	char			**map;
 	uint32_t		ceil_color;
 	uint32_t		floor_color;
-	
 }	t_data;
 
 //init
@@ -148,8 +147,8 @@ void	set_raycast_values(t_data *data, int x);
 void	calc_init_side(t_data *data);
 void	dda(t_data *data);
 void	cal_height(t_data *data);
-void	calc_texX(t_data *data);
-void	calc_texPos(t_data *data);
+void	calc_texx(t_data *data);
+void	calc_texpos(t_data *data);
 int		get_tex_direct(t_data *data);
 
 //checks
@@ -166,9 +165,5 @@ int		array2d_y(char **c);
 void	free2d_int(int **a, int n);
 void	free2d_char(char **a, int n);
 t_pos	find_player(char **map);
-
-
-//bonus
-void	minimap_start(t_data *data);
 
 #endif
