@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:11:51 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/28 11:25:24 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/29 11:22:41 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	get_map(t_data *data, char **file, int i)
 	int		longest;
 
 	if (i == -1)
-		exit (write(2, "Error: Failed to find/fo", 24) \
-		- write(2, "und duplicate variables\n", 23));
+		exit (write(2, "Error\nFailed to find/fou", 25) \
+		- write(2, "nd duplicate variables\n", 24));
 	j = 0;
 	len = array2d_y(file);
 	longest = longest_row(file, i);

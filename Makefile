@@ -2,7 +2,6 @@
 SRC_NAME =	main \
 			utils \
 			init/init \
-			init/init_image \
 			init/dfs_init \
 			init/intarr_init \
 			parse/map \

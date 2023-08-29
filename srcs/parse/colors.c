@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:16:50 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/28 14:17:47 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/28 15:00:34 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ int	assign_color(t_data *data, char *str, int space, unsigned int *bit_sign)
 {
 	if (!(*bit_sign & (1 << 4)) && !ft_strncmp(str, "F ", 2))
 	{
-		data->floor_color = decode_color(str + space + 1);
+		data->floor_color = decode_color(str + space);
 		*bit_sign |= 1 << 4;
 	}
 	else if (*bit_sign & (1 << 4) && !ft_strncmp(str, "F ", 2))
 		return (-1);
 	if (!(*bit_sign & (1 << 5)) && !ft_strncmp(str, "C ", 2))
 	{
-		data->ceil_color = decode_color(str + space + 1);
+		data->ceil_color = decode_color(str + space);
 		*bit_sign |= 1 << 5;
 	}
 	else if (*bit_sign & (1 << 5) && !ft_strncmp(str, "C ", 2))

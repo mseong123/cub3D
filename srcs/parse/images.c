@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:16:44 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/28 14:18:58 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/29 11:18:55 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	find_space(char *s)
 {
 	int	i;
 
-	i = 0;
-	while (s[i])
-		if (s[i++] != ' ')
+	i = 1;
+	while (s[++i])
+		if (s[i] != ' ')
 			return (i);
 	return (0);
 }
@@ -41,29 +41,28 @@ static int	get_image(t_data *data, char *str, int i, unsigned int *bit_sign)
 	return (0);
 }
 
-
 static int	assign_img(t_data *data, char *str, unsigned int *bit_sign)
 {
 	int	space;
 
 	space = find_space(str);
 	if (!(*bit_sign & 1) && !ft_strncmp(str, "NO ", 3))
-		return (get_image(data, str + space + 2, 0, bit_sign));
+		return (get_image(data, str + space, NORTH, bit_sign));
 	else if (*bit_sign & 1 && !ft_strncmp(str, "NO ", 3))
 		return (-1);
 	if (!(*bit_sign & (1 << 1)) && !ft_strncmp(str, "SO ", 3))
-		return (get_image(data, str + space + 2, 1, bit_sign));
+		return (get_image(data, str + space, SOUTH, bit_sign));
 	else if (*bit_sign & (1 << 1) && !ft_strncmp(str, "SO ", 3))
 		return (-1);
 	if (!(*bit_sign & (1 << 2)) && !ft_strncmp(str, "EA ", 3))
-		return (get_image(data, str + space + 2, 2, bit_sign));
+		return (get_image(data, str + space, EAST, bit_sign));
 	else if (*bit_sign & (1 << 2) && !ft_strncmp(str, "EA ", 3))
 		return (-1);
 	if (!(*bit_sign & (1 << 3)) && !ft_strncmp(str, "WE ", 3))
-		return (get_image(data, str + space + 2, 3, bit_sign));
+		return (get_image(data, str + space, WEST, bit_sign));
 	else if (*bit_sign & (1 << 3) && !ft_strncmp(str, "WE ", 3))
 		return (-1);
-	else if (assign_color(data, str, space, bit_sign) == -1)
+	if (assign_color(data, str, space, bit_sign) == -1)
 		return (-1);
 	return (0);
 }

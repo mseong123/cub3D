@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:38:07 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/28 14:23:31 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/29 11:21:14 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,15 @@ void	init1(t_data *data, char **file)
 	get_map(data, file, getfileinfo(data, file));
 	dfs_init(&dfs_info, data);
 	if (checkmapchar(data->map) == -1)
-		exit (write(2, "Error: Invalid charact", 23) \
-		- write(2, "ers/player not found\n", 22));
+		exit (write(2, "Error\nInvalid characte", 23) \
+		- write(2, "rs/player not found \n", 22));
 	if (dfs(&dfs_info, dfs_info.start) != 1 && *dfs_info.flag == 1)
-		exit (write(2, "Error: Invalid", 15) - write(2, " map layout \n", 14));
+		exit (write(2, "Error\nInvalid", 14) - write(2, " map layout\n", 13));
 	free(dfs_info.flag);
 	free2d_int(dfs_info.visited, dfs_info.max.y + 2);
 	free2d_char(dfs_info.map, dfs_info.max.y);
 	data->player.posY = find_player(data->map).y;
 	data->player.posX = find_player(data->map).x;
-	data->c_fps = ft_strdup("0");
-	data->frames = 0;
-	gettimeofday(&data->frame_start, NULL);
 	init_player(&data->player);
 	init_ray(&data->ray);
 	(&data->texture)->texX = 0;
@@ -86,20 +83,20 @@ void	init(t_data *data, char *str)
 	file = get_file(str);
 	if (!file || !*file)
 	{
-		perror("cub3d");
+		perror("Error");
 		exit (1);
 	}
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 	{
-		perror("cub3d");
+		perror("Error");
 		exit(EXIT_FAILURE);
 	}
 	data->mlx_win = mlx_new_window(data->mlx_ptr, \
 	W_WIDTH, W_HEIGHT, "cub3d");
 	if (!data->mlx_win)
 	{
-		perror("cub3d");
+		perror("Error");
 		exit(EXIT_FAILURE);
 	}
 	init1(data, file);

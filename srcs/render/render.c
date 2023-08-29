@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:58:11 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/24 18:02:23 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/29 11:22:57 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	img_pix_put(t_img *img, int x, int y, uint32_t color)
 {
 	char	*pixel;
 
-	// printf("%p\n", img);
 	pixel = img->addr;
 	pixel += (img->line_len * y) + (x * (img->bpp/8));
 	*(uint32_t *)pixel = color;

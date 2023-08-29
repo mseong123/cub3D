@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 08:34:49 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/28 13:34:53 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/29 11:20:12 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ static char	**modify_map(char **map)
 void	dfs_init(t_map *map_dfs, t_data *data)
 {
 	if (!data->map || !*data->map)
-		exit (write(2, "Error: Failed ", 15) - write(2, "to load map \n", 14));
+		exit (write(2, "Error\nFailed ", 14) - write(2, "to load map\n", 13));
 	map_dfs->map = modify_map(data->map);
 	if (!map_dfs->map | !*map_dfs->map)
-		exit (write(2, "Error: Failed ", 15) - write(2, "to load map \n", 14));
+		exit (write(2, "Error\nFailed ", 14) - write(2, "to load map\n", 13));
 	map_dfs->start.x = 0;
 	map_dfs->start.y = 0;
 	map_dfs->max.x = ft_strlen(map_dfs->map[0]);
@@ -77,13 +77,13 @@ void	dfs_init(t_map *map_dfs, t_data *data)
 	if (!map_dfs->flag)
 	{
 		free2d_char(map_dfs->map, map_dfs->max.y);
-		exit (write(2, "Error: Failed", 14) - write(2, " to init DFS \n", 14));
+		exit (write(2, "Error\nFailed", 13) - write(2, " to init DFS\n", 14));
 	}
 	map_dfs->visited = init_visited(map_dfs->map);
 	if (!map_dfs->visited)
 	{
 		free2d_char(map_dfs->map, map_dfs->max.y);
-		exit (write(2, "Error: Failed", 14) - write(2, " to init DFS \n", 14));
+		exit (write(2, "Error\nFailed", 13) - write(2, " to init DFS\n", 14));
 		return ;
 	}
 }

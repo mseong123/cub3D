@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/28 14:24:47 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/29 10:58:54 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
-
-//temp if not allowed
-# include <sys/time.h>
 
 //structs
 typedef struct s_player
@@ -118,10 +115,6 @@ typedef struct s_data
 	char			**map;
 	uint32_t		ceil_color;
 	uint32_t		floor_color;
-	t_img			camera;
-	int				frames;
-	struct timeval	frame_start;
-	char			*c_fps;
 }	t_data;
 
 //init
@@ -171,5 +164,9 @@ int		array2d_y(char **c);
 void	free2d_int(int **a, int n);
 void	free2d_char(char **a, int n);
 t_pos	find_player(char **map);
+
+
+//bonus
+void	minimap_start(t_data *data);
 
 #endif
