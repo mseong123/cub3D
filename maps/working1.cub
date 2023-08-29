@@ -3,7 +3,7 @@ SO ./assets/stone2.xpm
 WE ./assets/stone3.xpm
 EA ./assets/stone4.xpm
 
-F 128,96,77
+F 85,85,85
 C 38,83,141
 
 11111111111          111111111111
