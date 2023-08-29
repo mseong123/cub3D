@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:58:44 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/28 13:50:40 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/29 14:57:33 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,32 @@ int	checkmapcub(char *s)
 	return (-1);
 }
 
-int	checkmapchar(char **map)
+void	init_player_orient(char c, int *flag, t_data *data)
+{
+	if (c == 'N')
+	{
+		data->ray.dirY = -1;
+		data->ray.planeX = 0.66;
+	}
+	else if (c == 'E')
+	{
+		data->ray.dirX = 1;
+		data->ray.planeY = 0.66;
+	}
+	else if (c == 'S')
+	{
+		data->ray.dirY = 1;
+		data->ray.planeX = -0.66;
+	}
+	else
+	{
+		data->ray.dirX = -1;
+		data->ray.planeY = -0.66;
+	}
+	*flag += 1;
+}
+
+int	checkmapchar(char **map, t_data *data)
 {
 	int	i;
 	int	j;
@@ -47,7 +72,7 @@ int	checkmapchar(char **map)
 				return (-1);
 			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
 				|| map[i][j] == 'W')
-				flag++;
+				init_player_orient(map[i][j], &flag, data);
 		}
 	}
 	if (flag != 1)

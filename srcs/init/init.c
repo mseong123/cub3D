@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:38:07 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/29 11:21:14 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/29 14:55:00 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	init_ray(t_ray *ray)
 {
-	ray->dirX = -1;
+	ray->dirX = 0;
 	ray->dirY = 0;
 	ray->planeX = 0;
-	ray->planeY = -0.66;
+	ray->planeY = 0;
 	ray->rayX = 0;
 	ray->rayY = 0;
 	ray->deltaX = 0;
@@ -59,7 +59,12 @@ void	init1(t_data *data, char **file)
 
 	get_map(data, file, getfileinfo(data, file));
 	dfs_init(&dfs_info, data);
-	if (checkmapchar(data->map) == -1)
+	init_player(&data->player);
+	init_ray(&data->ray);
+	(&data->texture)->texX = 0;
+	(&data->texture)->step = 0;
+	(&data->texture)->texPos = 0;
+	if (checkmapchar(data->map, data) == -1)
 		exit (write(2, "Error\nInvalid characte", 23) \
 		- write(2, "rs/player not found \n", 22));
 	if (dfs(&dfs_info, dfs_info.start) != 1 && *dfs_info.flag == 1)
@@ -69,11 +74,7 @@ void	init1(t_data *data, char **file)
 	free2d_char(dfs_info.map, dfs_info.max.y);
 	data->player.posY = find_player(data->map).y;
 	data->player.posX = find_player(data->map).x;
-	init_player(&data->player);
-	init_ray(&data->ray);
-	(&data->texture)->texX = 0;
-	(&data->texture)->step = 0;
-	(&data->texture)->texPos = 0;
+	
 }
 
 void	init(t_data *data, char *str)

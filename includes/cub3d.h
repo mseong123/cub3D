@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/29 10:58:54 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/29 14:39:34 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,11 @@ typedef struct s_data
 	t_ray			ray;
 	t_img			tex[4];
 	t_tex			texture;
+	t_img			camera;
 	char			**map;
 	uint32_t		ceil_color;
 	uint32_t		floor_color;
+	
 }	t_data;
 
 //init
@@ -152,7 +154,7 @@ int		get_tex_direct(t_data *data);
 
 //checks
 int		checkmapcub(char *s);
-int		checkmapchar(char **map);
+int		checkmapchar(char **map, t_data *data);
 int		dfs(t_map *map, t_pos move);
 int		**init_visited(char **map);
 
