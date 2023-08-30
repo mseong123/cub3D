@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:38:07 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/30 16:56:28 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/30 16:59:32 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	init1(t_data *data, char **file)
 	free(dfs_info.flag);
 	free2d_int(dfs_info.visited, dfs_info.max.y + 2);
 	free2d_char(dfs_info.map, dfs_info.max.y);
-	data->player.posy = find_player(data->map).y;
-	data->player.posx = find_player(data->map).x;
+	data->player.posy = find_player(data->map).y + 0.5;
+	data->player.posx = find_player(data->map).x + 0.5;
 	data->c_fps = ft_strdup("0");
 	data->frames = 0;
 	gettimeofday(&data->frame_start, NULL);
