@@ -30,8 +30,6 @@ int	loop_handler(t_data *data)
 	return (0);
 }
 
-// need to fix main not working for some reason
-
 int	main(int ac, char **av)
 {
 	t_data		data;

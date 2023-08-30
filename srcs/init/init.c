@@ -72,8 +72,8 @@ void	init1(t_data *data, char **file)
 	free(dfs_info.flag);
 	free2d_int(dfs_info.visited, dfs_info.max.y + 2);
 	free2d_char(dfs_info.map, dfs_info.max.y);
-	data->player.posy = find_player(data->map).y;
-	data->player.posx = find_player(data->map).x;
+	data->player.posy = find_player(data->map).y + 0.5;
+	data->player.posx = find_player(data->map).x + 0.5;
 }
 
 void	init(t_data *data, char *str)
