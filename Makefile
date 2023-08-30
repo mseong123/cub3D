@@ -27,19 +27,24 @@ SRC_BONUS_NAME =	main_bonus \
 					init/dfs_init_bonus \
 					init/intarr_init_bonus \
 					init/init_minimap_bonus \
+					init/init_sprite_bonus \
 					parse/map_bonus \
 					parse/images_bonus \
 					parse/input_file_bonus \
 					parse/colors_bonus \
+					parse/sprites_bonus \
 					movement/handle_bonus \
 					movement/movement_bonus \
 					movement/rotate_bonus \
+					movement/sprite_movement_bonus \
 					render/render_bonus \
 					render/raycast_bonus \
 					render/texture_bonus \
 					render/minimap_bonus \
+					render/sprite_bonus \
 					checks/map_checks_bonus \
-					checks/dfs_bonus 
+					checks/dfs_bonus \
+					checks/check_sprite_bonus
 SRC_BONUS = $(SRC_BONUS_NAME:=.c)
 SRCS_BONUS_PATH = ./srcs_bonus/
 SRCS_BONUS = $(addprefix $(SRCS_BONUS_PATH), $(SRC_BONUS))

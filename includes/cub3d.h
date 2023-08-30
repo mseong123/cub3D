@@ -6,7 +6,7 @@
 /*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/29 14:39:34 by melee            ###   ########.fr       */
+/*   Updated: 2023/08/30 17:47:56 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define DESTROY 17
 # define MOVESPEED 0.05
 # define ROTSPEED 0.025
-# define T_WIDTH 640
-# define T_HEIGHT 640
+# define T_WIDTH 512
+# define T_HEIGHT 512
 # define COLLISION_MOD 3
 # define NORTH 0
 # define SOUTH 1

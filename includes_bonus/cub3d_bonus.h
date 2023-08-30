@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/30 12:59:25 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/30 18:41:02 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,21 @@
 # define DESTROY 17
 # define MOVESPEED 0.05
 # define ROTSPEED 0.025
-# define T_WIDTH 640
-# define T_HEIGHT 640
+# define T_WIDTH 512
+# define T_HEIGHT 512
 # define COLLISION_MOD 3
 # define NORTH 0
 # define SOUTH 1
 # define EAST 2
 # define WEST 3
+//bonus macros
+# define S_WIDTH 100
+# define S_HEIGHT 125
+# define UDIV 1.8
+# define VDIV 1.6
+# define VMOVE 180
+# define TICK 5
+# define COL_S 2
 
 //libraries
 # include "libft.h"
@@ -112,6 +120,35 @@ typedef struct s_map
 	int		*flag;
 }	t_map;
 
+typedef struct s_sprite
+{
+	double	posx;
+	double	posy;
+	int		reverse;
+	double	spritex;
+	double	spritey;
+	double	invdet;
+	double	transformx;
+	double	transformy;
+	int		spritescreenx;
+	int		spriteheight;
+	int		spritewidth;
+	int		drawstarty;
+	int		drawendy;
+	int		drawstartx;
+	int		drawendx;
+	double	zbuffer[W_WIDTH];
+	int		vmovescreen;
+	int		i;
+	int		tick;
+	double	stepy;
+	double	texpos;
+	int		texx;
+	int		texy;
+	int		dir_index;
+	t_img	sprite_img[15];
+}	t_sprite;
+
 typedef struct s_data
 {
 	void			*mlx_ptr;
@@ -121,6 +158,8 @@ typedef struct s_data
 	t_img			tex[4];
 	t_tex			texture;
 	t_img			camera;
+	t_sprite		sprite;
+	int				sprite_render;
 	char			**map;
 	uint32_t		ceil_color;
 	uint32_t		floor_color;
@@ -141,6 +180,7 @@ void	get_map(t_data *data, char **file, int i);
 void	dfs_init(t_map *map_dfs, t_data *data);
 int		**init_visited(char **map);
 void	init_minimap(t_data *data);
+void	init_sprite(t_sprite *sprite);
 
 //handle
 int		handle_keydown(int keycode, t_data *data);
@@ -154,27 +194,31 @@ void	left(t_data *data);
 void	right(t_data *data);
 void	rotate_left(t_data *data);
 void	rotate_right(t_data *data);
+void	sprite_movement(t_data *data);
 
 //render
 void	img_pix_put(t_img *img, int x, int y, uint32_t color);
 void	render_frame(t_data *data);
 void	set_raycast_values(t_data *data, int x);
 void	calc_init_side(t_data *data);
-void	dda(t_data *data);
+void	dda(t_data *data, int x);
 void	cal_height(t_data *data);
 void	calc_texx(t_data *data);
 void	calc_texpos(t_data *data);
 int		get_tex_direct(t_data *data);
 void	minimap(t_data *data);
 void	display_fps(t_data *data);
+void	draw_sprite(t_data *data);
 
 //checks
 int		checkmapcub(char *s);
 int		checkmapchar(char **map, t_data *data);
 int		dfs(t_map *map, t_pos move);
+void	check_sprite(t_data *data);
 
 //parsing
 int		assign_color(t_data *data, char *str, int space, unsigned int *bits);
+void	init_sprite_img(t_data *data);
 
 //utils
 int		array2d_y(char **c);

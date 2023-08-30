@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:38:07 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/30 16:59:32 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/30 18:01:15 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	init1(t_data *data, char **file)
 	(&data->texture)->texx = 0;
 	(&data->texture)->step = 0;
 	(&data->texture)->texpos = 0;
+	data->sprite_render = 0;
 	if (checkmapchar(data->map, data) == -1)
 		exit (write(2, "Error\nInvalid characte", 23) \
 		- write(2, "rs/player not found \n", 22));
@@ -83,6 +84,7 @@ void	init1(t_data *data, char **file)
 	data->frames = 0;
 	gettimeofday(&data->frame_start, NULL);
 	init_minimap(data);
+	check_sprite(data);
 }
 
 void	init(t_data *data, char *str)

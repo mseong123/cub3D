@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:58:11 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/30 16:13:43 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/30 18:09:42 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,13 @@ void	render_frame(t_data *data)
 	{
 		set_raycast_values(data, x);
 		calc_init_side(data);
-		dda(data);
+		dda(data, x);
 		cal_height(data);
 		draw_camera(data, x);
 		x++;
 	}
+	if (data->sprite_render)
+		draw_sprite(data);
 	minimap(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, \
 	data->camera.mlx_img, 0, 0);

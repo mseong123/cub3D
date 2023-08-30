@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   raycast_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:55:35 by melee             #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:36 by melee            ###   ########.fr       */
+/*   Updated: 2023/08/30 18:05:52 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	calc_init_side(t_data *data)
 	}
 }
 
-void	dda(t_data *data)
+void	dda(t_data *data, int x)
 {
 	int	hit;
 
@@ -79,6 +79,7 @@ void	dda(t_data *data)
 		data->ray.perpdist = data->ray.sidex - data->ray.deltax;
 	else
 		data->ray.perpdist = data->ray.sidey - data->ray.deltay;
+	data->sprite.zbuffer[x] = data->ray.perpdist;
 }
 
 void	cal_height(t_data *data)

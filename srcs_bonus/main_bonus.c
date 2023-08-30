@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:28:24 by melee             #+#    #+#             */
-/*   Updated: 2023/08/30 13:03:40 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/30 18:10:54 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	loop_handler(t_data *data)
 	if (data->player.rot_right == true)
 		rotate_right(data);
 	render_frame(data);
+	if (data->sprite_render)
+		sprite_movement(data);
 	return (0);
 }
 
