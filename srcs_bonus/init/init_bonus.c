@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:38:07 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:00 by melee            ###   ########.fr       */
+/*   Updated: 2023/08/30 12:12:40 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	init1(t_data *data, char **file)
 	free(dfs_info.flag);
 	free2d_int(dfs_info.visited, dfs_info.max.y + 2);
 	free2d_char(dfs_info.map, dfs_info.max.y);
-	data->player.posy = find_player(data->map).y;
-	data->player.posx = find_player(data->map).x;
+	data->player.posy = find_player(data->map).y + 0.5;
+	data->player.posx = find_player(data->map).x + 0.5;
 }
 
 void	init(t_data *data, char *str)
