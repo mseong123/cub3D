@@ -26,6 +26,7 @@ SRC_BONUS_NAME =	main_bonus \
 					init/init_bonus \
 					init/dfs_init_bonus \
 					init/intarr_init_bonus \
+					init/init_minimap_bonus \
 					parse/map_bonus \
 					parse/images_bonus \
 					parse/input_file_bonus \
@@ -36,6 +37,7 @@ SRC_BONUS_NAME =	main_bonus \
 					render/render_bonus \
 					render/raycast_bonus \
 					render/texture_bonus \
+					render/minimap_bonus \
 					checks/map_checks_bonus \
 					checks/dfs_bonus 
 SRC_BONUS = $(SRC_BONUS_NAME:=.c)
@@ -62,7 +64,7 @@ NAME = cub3D
 
 NAME_BONUS = cub3D_bonus
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -ggdb
 
 all: $(OBJECTS_PATH) $(NAME)
 

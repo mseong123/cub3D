@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 09:38:07 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:00 by melee            ###   ########.fr       */
+/*   Updated: 2023/08/30 16:56:28 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ void	init_image(t_data *data, t_img *img, int width, int height)
 	img->mlx_img = mlx_new_image(data->mlx_ptr, width, height);
 	img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, \
 	&img->line_len, &img->endian);
+	data->mini_buff.limit = (t_pos){W_WIDTH / 4, W_HEIGHT / 3};
+	data->mini_buff.mlx_img = mlx_new_image(data->mlx_ptr, \
+	W_WIDTH / 4, W_HEIGHT / 3);
+	data->mini_buff.addr = mlx_get_data_addr(data->mini_buff.mlx_img, \
+	&data->mini_buff.bpp, &data->mini_buff.line_len, &data->mini_buff.endian);
 }
 
 void	init1(t_data *data, char **file)
@@ -74,6 +79,10 @@ void	init1(t_data *data, char **file)
 	free2d_char(dfs_info.map, dfs_info.max.y);
 	data->player.posy = find_player(data->map).y;
 	data->player.posx = find_player(data->map).x;
+	data->c_fps = ft_strdup("0");
+	data->frames = 0;
+	gettimeofday(&data->frame_start, NULL);
+	init_minimap(data);
 }
 
 void	init(t_data *data, char *str)

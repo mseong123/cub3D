@@ -1,16 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:28:24 by melee             #+#    #+#             */
-/*   Updated: 2023/08/29 11:18:34 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/08/30 13:03:40 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	display_fps(t_data *data)
+{
+	struct timeval	current_time;
+	int				temp;
+
+	data->frames++;
+	gettimeofday(&current_time, NULL);
+	if (current_time.tv_sec - data->frame_start.tv_sec >= 1)
+	{
+		temp = data->frames / (current_time.tv_sec - data->frame_start.tv_sec);
+		free(data->c_fps);
+		data->c_fps = ft_itoa(temp);
+		mlx_string_put(data->mlx_ptr, data->mlx_win, \
+		W_WIDTH - 20, 20, 0xFFFFFF, data->c_fps);
+		gettimeofday(&data->frame_start, NULL);
+		data->frames = 0;
+	}
+	else
+		mlx_string_put(data->mlx_ptr, data->mlx_win, \
+		W_WIDTH - 20, 20, 0xFFFFFF, data->c_fps);
+}
 
 int	loop_handler(t_data *data)
 {
@@ -29,8 +51,6 @@ int	loop_handler(t_data *data)
 	render_frame(data);
 	return (0);
 }
-
-// need to fix main not working for some reason
 
 int	main(int ac, char **av)
 {

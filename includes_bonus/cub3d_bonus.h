@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/29 14:39:34 by melee            ###   ########.fr       */
+/*   Updated: 2023/08/30 12:59:25 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
+# include <sys/time.h>
 
 //structs
 typedef struct s_player
@@ -73,6 +74,18 @@ typedef struct s_ray
 	int		lineheight;
 }	t_ray;
 
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
+
+typedef struct s_vec
+{
+	double	x;
+	double	y;
+}	t_vec;
+
 typedef struct s_img
 {
 	void	*mlx_img;
@@ -80,6 +93,7 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	t_pos	limit;
 }	t_img;
 
 typedef struct s_tex
@@ -88,12 +102,6 @@ typedef struct s_tex
 	double	step;
 	double	texpos;
 }	t_tex;
-
-typedef struct s_pos
-{
-	int	x;
-	int	y;
-}	t_pos;
 
 typedef struct s_map
 {
@@ -116,6 +124,11 @@ typedef struct s_data
 	char			**map;
 	uint32_t		ceil_color;
 	uint32_t		floor_color;
+	t_img			minimap;
+	t_img			mini_buff;
+	int				frames;
+	struct timeval	frame_start;
+	char			*c_fps;
 }	t_data;
 
 //init
@@ -126,6 +139,8 @@ char	**get_file(char *filename);
 int		getfileinfo(t_data *data, char **file);
 void	get_map(t_data *data, char **file, int i);
 void	dfs_init(t_map *map_dfs, t_data *data);
+int		**init_visited(char **map);
+void	init_minimap(t_data *data);
 
 //handle
 int		handle_keydown(int keycode, t_data *data);
@@ -150,12 +165,13 @@ void	cal_height(t_data *data);
 void	calc_texx(t_data *data);
 void	calc_texpos(t_data *data);
 int		get_tex_direct(t_data *data);
+void	minimap(t_data *data);
+void	display_fps(t_data *data);
 
 //checks
 int		checkmapcub(char *s);
 int		checkmapchar(char **map, t_data *data);
 int		dfs(t_map *map, t_pos move);
-int		**init_visited(char **map);
 
 //parsing
 int		assign_color(t_data *data, char *str, int space, unsigned int *bits);
@@ -165,5 +181,6 @@ int		array2d_y(char **c);
 void	free2d_int(int **a, int n);
 void	free2d_char(char **a, int n);
 t_pos	find_player(char **map);
+void	draw_line_dda(t_img *info, t_vec start, t_pos new_xy, int color);
 
 #endif

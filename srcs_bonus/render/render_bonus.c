@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:58:11 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:39 by melee            ###   ########.fr       */
+/*   Updated: 2023/08/30 16:13:43 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,12 @@ void	render_frame(t_data *data)
 		draw_camera(data, x);
 		x++;
 	}
+	minimap(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, \
 	data->camera.mlx_img, 0, 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, \
+	data->mini_buff.mlx_img, 0, 0);
+	display_fps(data);
 	mlx_destroy_image(data->mlx_ptr, data->camera.mlx_img);
+	mlx_destroy_image(data->mlx_ptr, data->mini_buff.mlx_img);
 }
