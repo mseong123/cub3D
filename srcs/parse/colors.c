@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:16:50 by lewlee            #+#    #+#             */
-/*   Updated: 2023/09/01 11:06:02 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/09/01 13:01:33 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ int	assign_color(t_data *data, char *str, int space, unsigned int *bit_sign)
 		return (-1);
 	return (0);
 }
-
