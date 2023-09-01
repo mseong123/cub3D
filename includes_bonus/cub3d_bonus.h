@@ -6,7 +6,7 @@
 /*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/30 18:41:02 by melee            ###   ########.fr       */
+/*   Updated: 2023/09/01 10:49:01 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define VMOVE 180
 # define TICK 5
 # define COL_S 2
+# define MOUSEMOVE 6
+# define ROTSPEEDMOUSE 0.04
 
 //libraries
 # include "libft.h"
@@ -186,14 +188,15 @@ void	init_sprite(t_sprite *sprite);
 int		handle_keydown(int keycode, t_data *data);
 int		handle_keyup(int keycode, t_data *data);
 int		handle_destroy(t_data *data);
+int		handle_mouse(int x, int y, t_data *data);
 
 //movement
 void	up(t_data *data);
 void	down(t_data *data);
 void	left(t_data *data);
 void	right(t_data *data);
-void	rotate_left(t_data *data);
-void	rotate_right(t_data *data);
+void	rotate_left(t_data *data, int mouse);
+void	rotate_right(t_data *data, int mouse);
 void	sprite_movement(t_data *data);
 
 //render
