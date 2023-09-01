@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:58:44 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/30 18:06:47 by melee            ###   ########.fr       */
+/*   Updated: 2023/09/01 12:59:05 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int	checkmapchar(char **map, t_data *data)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] >= 9 && map[i][j] <= 13)
-				map[i][j] = ' ';
 			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' '
 				&& map[i][j] != 'N' && map[i][j] != 'S' && map[i][j] != 'E'
 				&& map[i][j] != 'W' && map[i][j] != 'A')
