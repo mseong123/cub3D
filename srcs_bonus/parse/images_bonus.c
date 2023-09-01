@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   images.c                                           :+:      :+:    :+:   */
+/*   images_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:16:44 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/29 11:18:55 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/09/01 12:44:17 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ int	getfileinfo(t_data *data, char **file)
 	while (++i < n)
 		if (assign_img(data, file[i], &bit_sign) == -1)
 			break ;
-	if (bit_sign == 63)
+	if (bit_sign == 63 && data->ceil_color >= 0 && data->ceil_color <= 16777215
+		&& data->floor_color >= 0 && data->floor_color <= 16777215)
 		return (i);
 	return (-1);
 }
