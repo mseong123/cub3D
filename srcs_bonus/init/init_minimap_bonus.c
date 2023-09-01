@@ -6,7 +6,7 @@
 /*   By: lewlee <lewlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:02:54 by lewlee            #+#    #+#             */
-/*   Updated: 2023/08/30 16:57:07 by lewlee           ###   ########.fr       */
+/*   Updated: 2023/09/01 11:06:34 by lewlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_minimap(t_data *data)
 		{
 			if (data->map[i][j] == '1')
 				draw_block(&data->minimap, (t_pos){j * 10, i * 10}, 1);
-			else if (ft_strchr("0NSEW", data->map[i][j]))
+			else if (ft_strchr("0NSEWA", data->map[i][j]))
 				draw_block(&data->minimap, (t_pos){j * 10, i * 10}, 0);
 			else
 				draw_block(&data->minimap, (t_pos){j * 10, i * 10}, 2);
