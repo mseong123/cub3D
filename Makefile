@@ -69,7 +69,7 @@ NAME = cub3D
 
 NAME_BONUS = cub3D_bonus
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -ggdb
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(OBJECTS_PATH) $(NAME)
 
