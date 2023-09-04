@@ -15,4 +15,29 @@ Clone the repository including the MiniLibX (for macOS) library:
 ```shell
 git clone https://github.com/mseong123/cub3D.git
 ```
+## Compile and Run
+
+The program is split into a mandatory part and a bonus part. The bonus part adds wall collision, a rotating minimap, a (Sonic!) sprite and the ability to rotate the view by moving the mouse.
+
+To compile the mandatory part, `cd` into the cloned directory and:
+
+```shell
+make
+```
+
+To compile the bonus part, `cd` into the cloned directory and:
+
+```shell
+make bonus
+```
+
+To run the program:
+For mandatory:
+```shell
+./cub3D ./maps/working1.cub
+```
+For bonus:
+```shell
+./cub3D_bonus ./maps/sonic_bonus.cub
+```
 
