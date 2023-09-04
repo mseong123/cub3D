@@ -32,6 +32,7 @@ make bonus
 ```
 
 To run the program:
+
 For mandatory:
 ```shell
 ./cub3D ./maps/working1.cub
