@@ -41,4 +41,4 @@ For bonus:
 ```shell
 ./cub3D_bonus ./maps/sonic_bonus.cub
 ```
-
+![mandatory gif](https://github.com/mseong123/cub3D/blob/main/assets/mandatory.gif)
