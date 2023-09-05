@@ -1,6 +1,6 @@
 # cub3D
 
-`cub3d` is a 42 school team project to render a 2D map into a 3D viewport using raycasting algorithm (like [Wolfenstein 3D](https://fr.wikipedia.org/wiki/Wolfenstein_3D) which was the first FPS ever). The project is implemented using the [MiniLibX library](https://github.com/42Paris/minilibx-linux).
+`cub3d` is a 42 school team project to render a 2D map into a 3D viewport using raycasting algorithm (like [Wolfenstein 3D](https://fr.wikipedia.org/wiki/Wolfenstein_3D) which was the first FPS ever). The project is implemented using the [MiniLibX library](https://github.com/42Paris/minilibx-linux) and written in C language.
 
 ![mandatory gif](https://github.com/mseong123/cub3D/blob/main/assets/mandatory.gif)
 
