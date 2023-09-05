@@ -55,6 +55,7 @@ Controls for movement and rotation are:
 - `left arrow`: rotate left
 - `right arrow`: rotate right
 - `mouse`: rotate by moving the mouse (bonus only)
+- `ESC`: exit the program
 
 ## Useful Resources
 
