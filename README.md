@@ -4,6 +4,8 @@
 
 ![mandatory gif](https://github.com/mseong123/cub3D/blob/main/assets/mandatory.gif)
 
+![bonus gif](https://github.com/mseong123/cub3D/blob/main/assets/bonus.gif)
+
 ## Status
 
 Validated 4/9/2023. Grade: 120%.
@@ -35,11 +37,32 @@ make bonus
 To run the program:
 
 For mandatory:
-```shell
+```
 ./cub3D ./maps/working1.cub
 ```
 For bonus:
-```shell
+```
 ./cub3D_bonus ./maps/sonic_bonus.cub
 ```
+## Controls
 
+Controls for movement and rotation are:
+
+- `W`: move forward
+- `S`: move backward
+- `A`: strafe left
+- `D`: strafe right
+- `left arrow`: rotate left
+- `right arrow`: rotate right
+- `mouse`: rotate by moving the mouse (bonus only)
+
+## Useful Resources
+
+Useful resources for this project are:
+
+- Raycasting: [Lode's Computer Graphics Tutorial - Raycasting](https://lodev.org/cgtutor/raycasting.html)
+- Raycasting: [Permadi's Raycasting tutorial](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/)
+
+
+---
+Team Project by [mseong123](https://github.com/mseong123) and [lewislee42](https://github.com/lewislee42)
