@@ -4,7 +4,7 @@
 
 ![mandatory gif](https://github.com/mseong123/cub3D/blob/main/assets/mandatory.gif)
 
-![bonus gif](https://github.com/mseong123/cub3D/blob/main/assets/bonus.gif)
+![bonus gif](https://github.com/mseong123/cub3D/blob/122694715e60a0f2e6ec3848bad0506b8c943ff0/assets/bonus.gif)
 
 ## Status
 
