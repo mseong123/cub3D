@@ -8,7 +8,7 @@
 
 ## Status
 
-Validated 4/9/2023. Grade: 120%.
+Validated 4/9/2023. Grade: 120%. Project duration: 3 weeks.
 
 ## Clone
 
