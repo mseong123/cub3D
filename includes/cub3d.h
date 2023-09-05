@@ -6,19 +6,19 @@
 /*   By: melee <melee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 09:26:52 by melee             #+#    #+#             */
-/*   Updated: 2023/08/30 17:47:56 by melee            ###   ########.fr       */
+/*   Updated: 2023/09/04 18:17:29 by melee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define W_WIDTH 1280
-# define W_HEIGHT 720
+# define W_WIDTH 640
+# define W_HEIGHT 360
 # define KEYPRESS 2
 # define KEYRELEASE 3
 # define DESTROY 17
-# define MOVESPEED 0.05
-# define ROTSPEED 0.025
+# define MOVESPEED 0.025
+# define ROTSPEED 0.015
 # define T_WIDTH 512
 # define T_HEIGHT 512
 # define COLLISION_MOD 3

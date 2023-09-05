@@ -12,7 +12,7 @@ Validated 4/9/2023. Grade: 120%.
 
 Clone the repository including the MiniLibX (for macOS) library:
 
-```shell
+```
 git clone https://github.com/mseong123/cub3D.git
 ```
 ## Compile and Run
